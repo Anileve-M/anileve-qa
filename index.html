@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evelina Vetchinova | QA Engineer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #1a2639;
+            --accent-blue: hsl(211, 89%, 47%);
+            --accent-light: hsl(211, 89%, 47%);
+            --bg-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --card-border: #e9ecef;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+        }
+        
+        /* Hero секция */
+        .hero-section {
+            background: linear-gradient(135deg, #1a2639 0%, #2d3e50 100%);
+            color: white;
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--accent-blue);
+        }
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(1, 8, 15, 0.05) 0px,
+                rgba(113, 121, 129, 0.05) 20px,
+                transparent 20px,
+                transparent 40px
+            );
+            pointer-events: none;
+        }
+        
+        .qa-badge {
+            background: var(--accent-blue);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        
+        .name-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Метрики */
+        .metric-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px 20px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .metric-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+        
+        .metric-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            letter-spacing: 0.3px;
+        }
+        
+        /* Опыт работы */
+        .experience-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        .company-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-blue);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .company-info h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .company-meta {
+            color: #6c757d;
+            font-size: 1rem;
+        }
+        
+        .company-meta i {
+            margin-right: 5px;
+            color: var(--accent-blue);
+        }
+        
+        .methodology-badge {
+            display: inline-block;
+            background: rgba(58, 110, 165, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-left: 15px;
+        }
+        
+        .responsibilities-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .responsibility-item {
+            padding: 16px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .responsibility-item:last-child {
+            border-bottom: none;
+        }
+        
+        .responsibility-number {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: rgba(58, 110, 165, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .responsibility-content {
+            flex-grow: 1;
+        }
+        
+        .responsibility-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .responsibility-desc {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Проекты */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-blue);
+            border-radius: 2px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: all 0.3s;
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(58, 110, 165, 0.15);
+            border-color: var(--accent-blue);
+        }
+        
+        .project-header {
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(58, 110, 165, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+        }
+        
+        .project-title h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .project-title p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .project-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-desc {
+            color: #495057;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .project-test-list {
+            margin: 15px 0;
+            padding-left: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .project-test-list li {
+            margin-bottom: 5px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+        
+        .tech-tag {
+            background: var(--bg-light);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #495057;
+            border: 1px solid #e9ecef;
+        }
+        
+        /* Стек технологий */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(58, 110, 165, 0.1);
+            border-color: var(--accent-blue);
+        }
+
+        .skill-category h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(58, 110, 165, 0.2);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .skill-category h4 i {
+            color: var(--accent-blue);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            flex: 1;
+            align-content: flex-start;
+        }
+
+        .skill-item {
+            background: var(--bg-light);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #2c3e50;
+            border: 1px solid #e9ecef;
+            transition: all 0.2s ease;
+            letter-spacing: 0.2px;
+            display: inline-block;
+            width: fit-content;
+            max-width: 100%;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 480px) {
+            .skill-item {
+                white-space: normal;
+                word-break: break-word;
+                text-align: center;
+                padding: 5px 10px;
+                font-size: 0.85rem;
+            }
+        }
+
+        .skill-item:hover {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+            transform: scale(1.02);
+            box-shadow: 0 5px 10px rgba(58, 110, 165, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .skill-category {
+                padding: 20px;
+            }
+            
+            .skill-category h4 {
+                font-size: 1rem;
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .skill-item {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Контакты */
+        .contact-section {
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            margin: 40px 0;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .contact-link.telegram {
+            background: #0088cc;
+            color: white;
+        }
+        
+        .contact-link.telegram:hover {
+            background: #006699;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,136,204,0.3);
+            border-color: var(--accent-blue);
+        }
+        
+        .contact-link.email {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .contact-link.email:hover {
+            background: #2c3e50;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(26,38,57,0.3);
+            border-color: var(--accent-blue);
+        }
+        
+        .contact-link.github {
+            background: #24292e;
+            color: white;
+        }
+        
+        .contact-link.github:hover {
+            background: #000000;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(36,41,46,0.3);
+            border-color: var(--accent-blue);
+        }
+        
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .footer p {
+            opacity: 0.9;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 992px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .name-title {
+                font-size: 2.5rem;
+            }
+            
+            .experience-card {
+                padding: 25px;
+            }
+            
+            .company-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .contact-section {
+                padding: 30px 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero секция -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <span class="qa-badge">QA ENGINEER</span>
+            <h1 class="name-title">Эвелина Ветчинова</h1>
+            <div class="subtitle mx-auto">
+                Обеспечиваю качество программных продуктов
+            </div>
+            
+            <!-- Ключевые метрики -->
+            <div class="row mt-5 g-4">
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <div class="metric-number">9 месяцев</div>
+                        <div class="metric-label">коммерческого опыта</div>
+                        <div style="font-size: 0.85rem; opacity: 0.7;">Экосистема Альфа</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <div class="metric-number">100+</div>
+                        <div class="metric-label">тест-кейсов</div>
+                        <div style="font-size: 0.85rem; opacity: 0.7;">разработано и поддерживается</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <div class="metric-number">50+</div>
+                        <div class="metric-label">баг-репортов</div>
+                        <div style="font-size: 0.85rem; opacity: 0.7;">оформлено в трекере</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Опыт работы -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Опыт работы</h2>
+            
+            <div class="experience-card">
+                <div class="company-header">
+                    <div class="company-logo" style="background: var(--accent-blue); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <img src="images/s_alfa_logo.jpg" alt="Альфа" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="company-info">
+                        <h3>Экосистема Альфа</h3>
+                        <div class="company-meta">
+                            <i class="bi bi-calendar3"></i> 2025 (9 месяцев) • 
+                            <i class="bi bi-briefcase"></i> QA Engineer
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="responsibilities-list">
+                    <!-- 1. Анализ требований -->
+                    <div class="responsibility-item">
+                        <div class="responsibility-number">1</div>
+                        <div class="responsibility-content">
+                            <div class="responsibility-title">Анализ требований</div>
+                            <div class="responsibility-desc">
+                                Изучение технических заданий, выявление неясностей и противоречий. 
+                                Участие в уточнении требований совместно с аналитиками и разработчиками.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2. Проектирование тестов -->
+                    <div class="responsibility-item">
+                        <div class="responsibility-number">2</div>
+                        <div class="responsibility-content">
+                            <div class="responsibility-title">Проектирование тестов</div>
+                            <div class="responsibility-desc">
+                                Создание тест-кейсов, чек-листов, тест-планов для нового функционала 
+                                и регрессионного тестирования. Поддержка тестовой документации в актуальном состоянии.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 3. Тестирование -->
+                    <div class="responsibility-item">
+                        <div class="responsibility-number">3</div>
+                        <div class="responsibility-content">
+                            <div class="responsibility-title">Тестирование</div>
+                            <div class="responsibility-desc">
+                                Ручное тестирование: поиск дефектов через UI, проверка функционала 
+                                в соответствии с требованиями. Тестирование новой функциональности и интеграций.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 4. Документирование -->
+                    <div class="responsibility-item">
+                        <div class="responsibility-number">4</div>
+                        <div class="responsibility-content">
+                            <div class="responsibility-title">Документирование</div>
+                            <div class="responsibility-desc">
+                                Заведение баг-репортов в трекер с подробным описанием шагов воспроизведения, 
+                                ожидаемого и фактического результата. Приоритизация дефектов совместно с командой.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 5. Регрессионное тестирование -->
+                    <div class="responsibility-item">
+                        <div class="responsibility-number">5</div>
+                        <div class="responsibility-content">
+                            <div class="responsibility-title">Регрессионное тестирование</div>
+                            <div class="responsibility-desc">
+                                Проверка, что нововведения не сломали старый функционал. 
+                                Проведение регрессионных прогонов перед релизами.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 6. Работа в процессах -->
+                    <div class="responsibility-item">
+                        <div class="responsibility-number">6</div>
+                        <div class="responsibility-content">
+                            <div class="responsibility-title">Работа в процессах</div>
+                            <div class="responsibility-desc">
+                                Участие в канбан-процессах: еженедельные встречи, планирование задач, 
+                                контроль WIP-лимитов. Работа с доской для визуализации потока задач.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 7. Отчетность -->
+                    <div class="responsibility-item">
+                        <div class="responsibility-number">7</div>
+                        <div class="responsibility-content">
+                            <div class="responsibility-title">Отчетность</div>
+                            <div class="responsibility-desc">
+                                Информирование команды о статусе качества продукта, 
+                                подготовка отчетов о тестировании для заинтересованных сторон.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Проекты -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Проекты</h2>
+            
+            <div class="projects-grid">
+                <!-- Яндекс.Музыка -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🎵</div>
+                        <div class="project-title">
+                            <h4>Яндекс.Музыка</h4>
+                            <p>Пет-проект</p>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-desc">
+                            Функциональное тестирование музыкального сервиса.
+                        </div>
+                        <ul class="project-test-list">
+                            <li>Тестирование плейлистов (создание, редактирование, удаление)</li>
+                            <li>Проверка шаринга и коллабораций</li>
+                            <li>Тестирование офлайн-режима</li>
+                            <li>Составление тест-кейсов и баг-репортов</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Web Testing</span>
+                            <span class="tech-tag">Test Design</span>
+                            <span class="tech-tag">Exploratory Testing</span>
+                            <span class="tech-tag">Checklists</span>
+                            <span class="tech-tag">Test Cases</span>
+                            <span class="tech-tag">Bug Reports</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- А-Чат -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">💬</div>
+                        <div class="project-title">
+                            <h4>А-Чат</h4>
+                            <p>Корпоративный мессенджер</p>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-desc">
+                            Надежный мессенджер для мгновенного обмена сообщениями и файлами.
+                        </div>
+                        <ul class="project-test-list">
+                            <li>Тестирование отправки и получения сообщений</li>
+                            <li>Проверка передачи файлов разных форматов</li>
+                            <li>Тестирование уведомлений и групповых чатов</li>
+                            <li>Проверка истории сообщений и офлайн-режима</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Web Testing</span>
+                            <span class="tech-tag">API Testing</span>
+                            <span class="tech-tag">Regression Testing</span>
+                            <span class="tech-tag">Postman</span>
+                            <span class="tech-tag">REST API</span>
+                            <span class="tech-tag">WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- А-Объявления -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🏷️</div>
+                        <div class="project-title">
+                            <h4>А-Объявления</h4>
+                            <p>Платформа для размещения объявлений</p>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-desc">
+                            Платформа для размещения и поиска частных и коммерческих объявлений.
+                        </div>
+                        <ul class="project-test-list">
+                            <li>Тестирование создания и редактирования объявлений</li>
+                            <li>Проверка загрузки изображений</li>
+                            <li>Тестирование поиска и фильтрации</li>
+                            <li>Проверка модерации объявлений</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Web Testing</span>
+                            <span class="tech-tag">UX Testing</span>
+                            <span class="tech-tag">Cross-browser Testing</span>
+                            <span class="tech-tag">Regression Testing</span>
+                            <span class="tech-tag">API Testing</span>
+                            <span class="tech-tag">Postman</span>
+                            <span class="tech-tag">Database Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Стек технологий -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Стек технологий</h2>
+            
+            <div class="skills-grid">
+                <!-- Languages & Core -->
+                <div class="skill-category">
+                    <h4><i class="bi bi-code-square"></i> Languages & Core</h4>
+                    <div class="skill-items">
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">Spring Boot</span>
+                        <span class="skill-item">Hibernate</span>
+                        <span class="skill-item">Maven</span>
+                        <span class="skill-item">Gradle</span>
+                        <span class="skill-item">JPA</span>
+                    </div>
+                </div>
+                
+                <!-- Databases -->
+                <div class="skill-category">
+                    <h4><i class="bi bi-database"></i> Databases</h4>
+                    <div class="skill-items">
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">PostgreSQL</span>
+                        <span class="skill-item">MongoDB</span>
+                    </div>
+                </div>
+                
+                <!-- DevOps & Infrastructure -->
+                <div class="skill-category">
+                    <h4><i class="bi bi-cloud"></i> DevOps & Infrastructure</h4>
+                    <div class="skill-items">
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">CI/CD</span>
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">GitHub Actions</span>
+                    </div>
+                </div>
+                
+                <!-- APIs & Messaging -->
+                <div class="skill-category">
+                    <h4><i class="bi bi-globe"></i> APIs & Messaging</h4>
+                    <div class="skill-items">
+                        <span class="skill-item">REST</span>
+                        <span class="skill-item">WebSocket</span>
+                        <span class="skill-item">JWT</span>
+                        <span class="skill-item">RabbitMQ</span>
+                        <span class="skill-item">JSON</span>
+                        <span class="skill-item">OAuth2</span>
+                    </div>
+                </div>
+                
+                <!-- Testing Tools -->
+                <div class="skill-category">
+                    <h4><i class="bi bi-bug"></i> Testing</h4>
+                    <div class="skill-items">
+                        <span class="skill-item">JUnit</span>
+                        <span class="skill-item">Postman</span>
+                        <span class="skill-item">Mockito</span>
+                    </div>
+                </div>
+                
+                <!-- Documentation & Design -->
+                <div class="skill-category">
+                    <h4><i class="bi bi-file-text"></i> Documentation & Design</h4>
+                    <div class="skill-items">
+                        <span class="skill-item">Swagger</span>
+                        <span class="skill-item">Figma</span>
+                        <span class="skill-item">Draw.io</span>
+                        <span class="skill-item">Markdown</span>
+                    </div>
+                </div>
+                
+                <!-- Methodologies -->
+                <div class="skill-category">
+                    <h4><i class="bi bi-people"></i> Methodologies</h4>
+                    <div class="skill-items">
+                        <span class="skill-item">Agile</span>
+                        <span class="skill-item">Kanban</span>
+                    </div>
+                </div>
+                
+                <!-- Test Management -->
+                <div class="skill-category">
+                    <h4><i class="bi bi-clipboard-check"></i> Test Management</h4>
+                    <div class="skill-items">
+                        <span class="skill-item">JIRA</span>
+                    </div>
+                </div>
+                
+                <!-- Version Control -->
+                <div class="skill-category">
+                    <h4><i class="bi bi-git"></i> Version Control</h4>
+                    <div class="skill-items">
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">GitHub</span>
+                    </div>
+                </div>
+                
+                <!-- Operating Systems -->
+                <div class="skill-category">
+                    <h4><i class="bi bi-pc-display"></i> Operating Systems</h4>
+                    <div class="skill-items">
+                        <span class="skill-item">Windows</span>
+                        <span class="skill-item">Android</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="container">
+        <div class="contact-section text-center">
+            <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color);">
+                Связаться со мной
+            </h2>
+            <p style="color: #6c757d; max-width: 600px; margin: 0 auto 30px;">
+                Открыта к предложениям о работе и интересным проектам в сфере QA
+            </p>
+            
+            <div class="contact-links">
+                <a href="mailto:evelina.tev@mail.ru" class="contact-link email">
+                    <i class="bi bi-envelope"></i> evelina.tev@mail.ru
+                </a>
+                <a href="https://t.me/E_velinaM" target="_blank" rel="noopener noreferrer" class="contact-link telegram">
+                    <i class="bi bi-telegram"></i> Telegram
+                </a>
+                <a href="https://github.com/Anileve-M" target="_blank" rel="noopener noreferrer" class="contact-link github">
+                    <i class="bi bi-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Anileve-M • QA Engineer</p>
+        </div>
+    </footer>
+</body>
+</html>
